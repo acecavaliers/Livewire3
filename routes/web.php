@@ -1,6 +1,8 @@
 <?php
 
+use App\Livewire\Customers\Create;
 use App\Livewire\Customers\Index;
+use App\Livewire\Products\Index as ProductsIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,9 @@ Route::get('/', function () {
 
 
 Route::get('/customer',Index::class)->name('customer.index');
+Route::get('/customer/create',Create::class)->name('customer.create');
+
+Route::get('/product',ProductsIndex::class)->name('product.index');
 
 Route::middleware([
     'auth:sanctum',
