@@ -3,6 +3,8 @@
 use App\Livewire\Customers\Create;
 use App\Livewire\Customers\Index;
 use App\Livewire\Products\Index as ProductsIndex;
+use App\Livewire\Supplier\Create as SupplierCreate;
+use App\Livewire\Supplier\Index as SupplierIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,10 @@ Route::get('/customer',Index::class)->name('customer.index');
 Route::get('/customer/create',Create::class)->name('customer.create');
 
 Route::get('/product',ProductsIndex::class)->name('product.index');
+
+
+Route::get('/supplier',SupplierIndex::class)->name('supplier.index');
+Route::get('/supplier/create',SupplierCreate::class)->name('supplier.create');
 
 Route::middleware([
     'auth:sanctum',

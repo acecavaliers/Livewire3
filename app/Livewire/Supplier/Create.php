@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Products;
+namespace App\Livewire\Supplier;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Create extends Component
 {
     public function render()
     {
-        return view('livewire.products.create')->layout('layouts.app');
+        return view('livewire.supplier.create')->layout('layouts.app');
     }
 }
