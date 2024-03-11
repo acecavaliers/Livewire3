@@ -55,22 +55,22 @@
           <div class="">
                 <div class="mb-4">
                     <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" wire:model="name" placeholder="Enter Title">
+                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" wire:model="name" placeholder="Enter Customer Name">
                     @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
-                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="credit_limit" wire:model="credit_limit" placeholder="Enter Title">
+                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Credit Limit:</label>
+                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="credit_limit" wire:model="credit_limit" placeholder="Enter credit limit">
                     @error('credit_limit') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
-                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="slug" wire:model="slug" placeholder="Enter Title">
+                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Slug:</label>
+                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  id="slug" wire:model="slug" placeholder="Enter tags">
                     @error('slug') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
-                    <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Body:</label>
-                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" wire:model="address" placeholder="Enter Body"></textarea>
+                    <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" wire:model="address" placeholder="Enter address"></textarea>
                     @error('address') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
           </div>
