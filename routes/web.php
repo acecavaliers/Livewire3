@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Customers\Create;
+use App\Livewire\Customers\Edit;
 use App\Livewire\Customers\Index;
 use App\Livewire\Products\Index as ProductsIndex;
 use App\Livewire\Supplier\Create as SupplierCreate;
@@ -25,6 +26,7 @@ Route::get('/', function () {
 
 Route::get('/customer',Index::class)->name('customer.index');
 Route::get('/customer/create',Create::class)->name('customer.create');
+Route::get('/customer/edit',Edit::class)->name('customer.edit');
 
 Route::get('/product',ProductsIndex::class)->name('product.index');
 

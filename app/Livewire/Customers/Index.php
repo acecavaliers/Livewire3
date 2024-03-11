@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $posts, $name, $address,$credit_limit, $id, $updateCust = false, $addCust = false;
+
     public $isOpen = false;
 
     public $search ='';
@@ -40,6 +42,38 @@ class Index extends Component
     {
         $customer->delete();
     }
+
+    /**
+     * Open Add Post form
+     * @return void
+     */
+    public function addPost()
+    {
+        $this->resetFields();
+        $this->addCust = true;
+        $this->updateCust = false;
+    }
+
+    public function editPost($id){
+        try {
+            $post = Customer::findOrFail($id);
+            if( !$post) {
+                session()->flash('error','Post not found');
+            } else {
+                $this->name = $post->name;
+                $this->address = $post->address;
+                $this->credit_limit = $post->credit_limit;
+                $this->id = $post->id;
+                $this->updateCust = true;
+                $this->addCust = false;
+
+            }
+        } catch (\Exception $ex) {
+            session()->flash('error','Something goes wrong!!');
+        }
+
+    }
+
     public function render()
     {
         return view('livewire.customers.index',[

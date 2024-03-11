@@ -1,4 +1,24 @@
 <div class="py-12">
+
+    <div class="col-md-8 mb-2">
+        @if(session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+        @if(session()->has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+        @if($addCust)
+            @include('livewire.customers.create')
+        @endif
+        @if($updateCust)
+            @include('livewire.customers.edit')
+        @endif
+    </div>
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
@@ -14,6 +34,8 @@
                                 Add New
                               </span>
                         </a>
+                        <button wire:click="addCust()" class="text-white hover:text-black font-normal rounded-md flex items-center p-2  bg-gray-900 hover:bg-gray-400">Add New Post</button>
+
                     </div>
                 </div>
             </div>
@@ -129,8 +151,8 @@
                                         Php {{ number_format($customer->credit_limit,2) }}
                                     </td>
                                     <td class="px-6 py-4 text-right flex justify-between">
-                                        <a onclick="confirm('Are sure u want to update customer {{ $customer->name }} ?')|| event.stopImmediatePropagation()" wire:click="delete({{ $customer->id }})" href="#" class="font-medium text-blue-600 hover:underline"> Delete </a>
-                                        <a onclick="confirm('Are sure u want to delete customer {{ $customer->name }} ?')|| event.stopImmediatePropagation()" wire:click="delete({{ $customer->id }})" href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                                        <a onclick="confirm('Are sure u want to delete customer {{ $customer->name }} ?')|| event.stopImmediatePropagation()" wire:click="delete({{ $customer->id }})" href="#" class="font-medium text-blue-600 hover:underline"> Delete </a>
+                                        <a  wire:click="editPost({{$customer->id}})" class="font-medium text-blue-600 hover:underline">Edit</a>
                                     </td>
                                 </tr>
                             @empty
