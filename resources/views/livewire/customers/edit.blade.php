@@ -41,6 +41,9 @@
                     <button class="mt-4 px-4 py-2 bg-gray-800 rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
                         Save
                     </button>
+                    <button  wire:click.prevent="cancelPost()"  class="mt-4 px-4 py-2 bg-gray-300 rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700">
+                        Cancel
+                    </button>
                 </form>
             </div>
 

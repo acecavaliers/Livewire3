@@ -13,6 +13,8 @@ class Index extends Component
 
     public $posts, $name, $address,$credit_limit, $id, $updateCust = false, $addCust = false;
 
+    public $isOpen1 = 0;
+
     public $isOpen = false;
 
     public $search ='';
@@ -43,13 +45,49 @@ class Index extends Component
         $customer->delete();
     }
 
+    public function create()
+    {
+        // $this->resetInputFields();
+        $this->openModal();
+    }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public function openModal()
+    {
+        $this->isOpen1 = true;
+    }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public function closeModal()
+    {
+        $this->isOpen1 = false;
+    }
+
+     /**
+     * Cancel Add/Edit form and redirect to post listing page
+     * @return void
+     */
+    public function cancelPost()
+    {
+        $this->addCust = false;
+        $this->updateCust = false;
+        // $this->resetFields();
+    }
     /**
      * Open Add Post form
      * @return void
      */
     public function addPost()
     {
-        $this->resetFields();
+        // $this->resetFields();
         $this->addCust = true;
         $this->updateCust = false;
     }
