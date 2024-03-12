@@ -27,6 +27,8 @@ class Index extends Component
 
     public $isOpen1 = 0;
 
+    public $isOpen2 = 0;
+
     public $isOpen = false;
 
     public $search ='';
@@ -54,7 +56,14 @@ class Index extends Component
     }
     public function delete(Customer $customer)
     {
-        $customer->delete();
+        // $customer->delete();
+        try {
+            $customer->delete();
+            session()->flash('success','Customer Deleted Successfully!!');
+
+        } catch (\Exception $ex) {
+            session()->flash('error','Something goes wrong!!');
+        }
     }
 
     public function create()
@@ -72,6 +81,10 @@ class Index extends Component
     {
         $this->isOpen1 = true;
     }
+    public function openModal2()
+    {
+        $this->isOpen2 = true;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -81,6 +94,10 @@ class Index extends Component
     public function closeModal()
     {
         $this->isOpen1 = false;
+    }
+    public function closeModal2()
+    {
+        $this->isOpen2 = false;
     }
 
      /**
@@ -106,7 +123,7 @@ class Index extends Component
 
     public function resetFields(){
         $this->name = '';
-        $this->credit_limit = '';
+        $this->credit_limit = 0.00;
         $this->slug = '';
         $this->address = '';
     }
@@ -116,46 +133,55 @@ class Index extends Component
     {
         $this->validate();
 
-        // Customer::create(
-        //     $this->only(['name', 'slug','address','credit_limit'])
-        // );
-
-        // return $this->redirect('/customer');
-
         try {
             Customer::create(
                 $this->only(['name', 'slug','address','credit_limit'])
             );
-            // Posts::create([
-            //     'title' => $this->title,
-            //     'description' => $this->description
-            // ]);
             session()->flash('success','Customer Created Successfully!!');
+
             $this->resetFields();
             $this->isOpen1 = false;
+
         } catch (\Exception $ex) {
             session()->flash('error','Something goes wrong!!');
         }
     }
 
+
     public function editPost($id){
         try {
             $post = Customer::findOrFail($id);
             if( !$post) {
-                session()->flash('error','Post not found');
+                session()->flash('error','Customer not found');
             } else {
                 $this->name = $post->name;
                 $this->address = $post->address;
                 $this->credit_limit = $post->credit_limit;
                 $this->id = $post->id;
-                $this->updateCust = true;
-                $this->addCust = false;
+                $this-> openModal2();
 
             }
         } catch (\Exception $ex) {
             session()->flash('error','Something goes wrong!!');
         }
 
+    }
+
+    public function updatePost()
+    {
+        $this->validate();
+        try {
+            Customer::whereId($this->id)->update([
+                'name' => $this->name,
+                'address' => $this->address,
+                'credit_limit' => $this->credit_limit
+            ]);
+            session()->flash('success','Customer Updated Successfully!!');
+            $this->resetFields();
+            $this->closeModal2();
+        } catch (\Exception $ex) {
+            session()->flash('success','Something goes wrong!!');
+        }
     }
 
     public function render()
