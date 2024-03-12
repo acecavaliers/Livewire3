@@ -11,7 +11,19 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $posts, $name, $address,$credit_limit, $id, $updateCust = false, $addCust = false;
+    #[Rule('required')]
+    public string $name = '';
+
+    #[Rule('required')]
+    public string $slug = '';
+
+    #[Rule('required')]
+    public string $address = '';
+
+    #[Rule('required')]
+    public float $credit_limit = 0;
+
+    public $posts, $id, $updateCust = false, $addCust = false;
 
     public $isOpen1 = 0;
 
@@ -79,7 +91,7 @@ class Index extends Component
     {
         $this->addCust = false;
         $this->updateCust = false;
-        // $this->resetFields();
+        $this->resetFields();
     }
     /**
      * Open Add Post form
@@ -87,9 +99,43 @@ class Index extends Component
      */
     public function addPost()
     {
-        // $this->resetFields();
+        $this->resetFields();
         $this->addCust = true;
         $this->updateCust = false;
+    }
+
+    public function resetFields(){
+        $this->name = '';
+        $this->credit_limit = '';
+        $this->slug = '';
+        $this->address = '';
+    }
+
+
+    public function save()
+    {
+        $this->validate();
+
+        // Customer::create(
+        //     $this->only(['name', 'slug','address','credit_limit'])
+        // );
+
+        // return $this->redirect('/customer');
+
+        try {
+            Customer::create(
+                $this->only(['name', 'slug','address','credit_limit'])
+            );
+            // Posts::create([
+            //     'title' => $this->title,
+            //     'description' => $this->description
+            // ]);
+            session()->flash('success','Customer Created Successfully!!');
+            $this->resetFields();
+            $this->isOpen1 = false;
+        } catch (\Exception $ex) {
+            session()->flash('error','Something goes wrong!!');
+        }
     }
 
     public function editPost($id){
