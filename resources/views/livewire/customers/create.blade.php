@@ -39,12 +39,12 @@
           </div>
         </div>
 
-        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <div class="bg-gray-50 px-4 py-2 space-x-2 sm:px-6 sm:flex sm:flex-row-reverse">
 
-          <button wire:click.prevent="save()" type="button" class="mt-4 px-4 py-2 bg-gray-800 rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
+          <button wire:click.prevent="save()" type="button" class="w-24 ml-2 mt-4 py-2 bg-gray-800 rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600">
             Save
           </button>
-          <button  wire:click="closeModal()" type="button" class="mt-4 px-4 py-2 bg-gray-300 rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700">
+          <button  wire:click="closeModal()" type="button" class="w-24 mr-2 mt-4 py-2 bg-gray-300 rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-500">
             Cancel
           </button>
           </form>

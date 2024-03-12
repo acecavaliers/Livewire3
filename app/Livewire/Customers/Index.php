@@ -157,6 +157,7 @@ class Index extends Component
                 $this->name = $post->name;
                 $this->address = $post->address;
                 $this->credit_limit = $post->credit_limit;
+                $this->slug = $post->slug;
                 $this->id = $post->id;
                 $this-> openModal2();
 
