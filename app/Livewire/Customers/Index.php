@@ -23,7 +23,7 @@ class Index extends Component
     #[Rule('required')]
     public float $credit_limit = 0;
 
-    public $posts, $id, $updateCust = false, $addCust = false;
+    public $posts, $id;
 
     public $isOpen1 = 0;
 
@@ -68,29 +68,14 @@ class Index extends Component
 
     public function create()
     {
-        // $this->resetInputFields();
-        $this->openModal();
-    }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    public function openModal()
-    {
         $this->isOpen1 = true;
     }
+
+
     public function openModal2()
     {
         $this->isOpen2 = true;
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function closeModal()
     {
         $this->isOpen1 = false;
@@ -100,26 +85,6 @@ class Index extends Component
         $this->isOpen2 = false;
     }
 
-     /**
-     * Cancel Add/Edit form and redirect to post listing page
-     * @return void
-     */
-    public function cancelPost()
-    {
-        $this->addCust = false;
-        $this->updateCust = false;
-        $this->resetFields();
-    }
-    /**
-     * Open Add Post form
-     * @return void
-     */
-    public function addPost()
-    {
-        $this->resetFields();
-        $this->addCust = true;
-        $this->updateCust = false;
-    }
 
     public function resetFields(){
         $this->name = '';

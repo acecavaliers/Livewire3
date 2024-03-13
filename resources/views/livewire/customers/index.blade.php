@@ -144,7 +144,7 @@
                         </thead>
                         <tbody class="divide-y divide-cool-gray-200 ">
                             @forelse ($customers as $customer)
-                                <tr wiere:key="{{ $customer->id }}" wire:loading.class="opacity-50">
+                                <tr wiere:key="{{ $customer->id }}">
                                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {{ $customer->name }}
                                     </td>
