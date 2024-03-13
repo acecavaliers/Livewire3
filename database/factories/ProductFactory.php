@@ -18,6 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
+
             'vendor_id'=>Vendor::factory(),
             // 'vendor_id'=>10,
             'name'=> fake()->name(),
