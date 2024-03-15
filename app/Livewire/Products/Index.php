@@ -9,6 +9,14 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use  WithPagination;
+
+    public $isOpen=0;
+
+    public function create()
+    {
+        $this->isOpen=true;
+    }
+
     public function render()
     {
         return view('livewire.products.index',[

@@ -27,6 +27,9 @@
             </div>
         </div>
 
+        @if ($isOpen)
+            @include('livewire.products.create')
+        @endif
 
         <div class="sm:px-6 lg:px-8">
             <div class="relative overflow-x-auto shadow-md sm:rounded-md">
