@@ -1,44 +1,133 @@
-<div class="w-full grid grid-cols-4 gap-10">
-    <div class="md:col-span-3 col-span-4">
-        <div id="posts" class=" px-3 lg:px-7 py-6">
-            <div class="flex justify-between items-center border-b border-gray-100">
-                <div id="filter-selector" class="flex items-center space-x-4 font-light ">
-                    <button class="text-gray-500 py-4">Latest</button>
-                    <button class="text-gray-900 py-4 border-b border-gray-700">Oldest</button>
-                </div>
-            </div>
-            <div class="py-4">
+<div class="py-5">
 
-            </div>
-        </div>
-    </div>
-    <div id="side-bar"
-        class="border-t border-t-gray-100 md:border-t-none col-span-4 md:col-span-1 px-3 md:px-6  space-y-10 py-6 pt-10 md:border-l border-gray-100 h-screen sticky top-0">
-        <div id="search-box">
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Search</h3>
-                <div class="w-52 flex rounded-2xl bg-gray-100 py-2 px-3 mb-3 items-center">
-                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
-                    </span>
-                    <input
-                        class="w-40 ml-1 bg-transparent focus:outline-none focus:border-none focus:ring-0 outline-none border-none text-xs text-gray-800 placeholder:text-gray-400"
-                        type="text" placeholder="Search Yelo">
+
+
+<div class="mx-auto sm:px-6 lg:px-8">
+
+
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+
+        <div class="py-3 sm:px-6 lg:px-8 mt-5">
+            <div class="">
+                <div class="flex justify-between">
+                    <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Search for users" class="w-64"/>
+                    <button wire:click="create()" class="text-white hover:text-black font-normal rounded-md flex items-center p-2  bg-gray-900 hover:bg-gray-400">Add New product</button>
+
+                    {{-- <a wire:navigate class="text-white hover:text-black font-normal rounded-md flex items-center p-2  bg-gray-900 hover:bg-gray-400" href="{{ route('customer.create') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span class="px-2">
+                            Add New
+                          </span>
+                    </a> --}}
+
                 </div>
             </div>
         </div>
 
-        <div id="recommended-topics-box">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">Recommended Topics</h3>
-            <div class="topics flex flex-wrap justify-start">
-                <a href="#" class="bg-red-600
-                                text-white
-                                rounded-xl px-3 py-1 text-base">
-                    Tailwind</a>
+
+        <div class="sm:px-6 lg:px-8">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-md">
+                <table class="w-full divide-y divide-cool-gray-200 text-sm text-left text-gray-500 bg-white">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3" wire:click="setSortBy('name')">
+                                <button class="flex items-center">
+                                    Customer name
+
+                                </button>
+
+                            </th>
+                            <th scope="col" class="px-6 py-3" wire:click="setSortBy('address')">
+                                <button class="flex items-center">
+                                    Address
+
+                                </button>
+                            </th>
+                            <th scope="col" class="px-6 py-3" wire:click="setSortBy('slug')">
+                                <button class="flex items-center">
+                                    Slug
+
+                                </button>
+                            </th>
+                            <th scope="col" class="px-6 py-3" wire:click="setSortBy('credit_limit')">
+                                <button class="flex items-center">
+                                    Credit Limit
+
+                                </button>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-cool-gray-200 ">
+                        @forelse ($products as $product)
+                        {{-- <tr wiere:key="{{ $product->id }}" wire:loading.class="opacity-50"> --}}
+                            <tr wiere:key="{{ $product->id }}">
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    {{ $product->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $product->vendor_id }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $product->description }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    Php {{ number_format($product->price,2) }}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+
+                                    <a  wire:click="editPost({{$product->id}})" class="font-medium text-blue-600 hover:underline">Edit</a>
+
+                                </td>
+                                <td class="px-6 py-4 text-right">
+
+                                    <a onclick="confirm('Are sure u want to delete product {{ $product->name }} ?')|| event.stopImmediatePropagation()" wire:click="delete({{ $product->id }})" href="#" class="font-medium text-red-600 hover:underline"> Delete </a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td colspan="5" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <div class="flex justify-center items-center">
+                                        No result found for: <b><i>{{ $search }}</i></b>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
+            <div class="py-2">
+                <div class="flex ">
+                    <div class="flex space-x-4 items-center mb-3">
+                        <label class="w-48 text-sm font-medium text-gray-900">Per Page</label>
+                        <select
+                            {{-- wire:model.live="perPage" --}}
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 sm:px-6 lg:px-8 mb-5">
+            {{ $products->links() }}
         </div>
     </div>
 </div>
+
+</div>
+
+

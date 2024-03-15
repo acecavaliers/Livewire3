@@ -5,7 +5,7 @@
         <div class="">
             <div class="flex justify-between">
                 <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Search for supplier" class="w-64"/>
-                <a wire:navigate class="text-white hover:text-black font-normal rounded-md flex items-center p-2  bg-gray-900 hover:bg-gray-400" href="{{ route('supplier.create') }}">
+                <a wire:navigate class="text-white hover:text-black font-normal rounded-md flex items-center p-2  bg-gray-900 hover:bg-gray-400" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>

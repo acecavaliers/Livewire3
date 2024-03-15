@@ -32,7 +32,6 @@ Route::get('/product',ProductsIndex::class)->name('product.index');
 
 
 Route::get('/supplier',SupplierIndex::class)->name('supplier.index');
-Route::get('/supplier/create',SupplierCreate::class)->name('supplier.create');
 
 Route::middleware([
     'auth:sanctum',
