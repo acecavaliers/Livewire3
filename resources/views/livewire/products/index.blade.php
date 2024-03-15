@@ -35,26 +35,26 @@
                         <tr>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('name')">
                                 <button class="flex items-center">
-                                    Customer name
+                                    Product name
 
                                 </button>
 
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('address')">
                                 <button class="flex items-center">
-                                    Address
+                                    Vendor Id
 
                                 </button>
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('slug')">
                                 <button class="flex items-center">
-                                    Slug
+                                    Description
 
                                 </button>
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('credit_limit')">
                                 <button class="flex items-center">
-                                    Credit Limit
+                                    Price
 
                                 </button>
                             </th>
@@ -83,12 +83,9 @@
                                     Php {{ number_format($product->price,2) }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-
                                     <a  wire:click="editPost({{$product->id}})" class="font-medium text-blue-600 hover:underline">Edit</a>
-
                                 </td>
                                 <td class="px-6 py-4 text-right">
-
                                     <a onclick="confirm('Are sure u want to delete product {{ $product->name }} ?')|| event.stopImmediatePropagation()" wire:click="delete({{ $product->id }})" href="#" class="font-medium text-red-600 hover:underline"> Delete </a>
                                 </td>
                             </tr>
