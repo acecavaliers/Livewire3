@@ -12,7 +12,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.products.index',[
-            'products'=>Product::latest()->take(15)->paginate(10)
+            'products'=>Product::latest()->take(100)->paginate(10)
         ])->layout('layouts.app');
     }
 }

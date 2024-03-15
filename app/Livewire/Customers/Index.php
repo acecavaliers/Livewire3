@@ -54,6 +54,7 @@ class Index extends Component
     {
         $this->resetPage();
     }
+
     public function delete(Customer $customer)
     {
         // $customer->delete();
@@ -71,20 +72,20 @@ class Index extends Component
         $this->isOpen1 = true;
     }
 
-
     public function openModal2()
     {
         $this->isOpen2 = true;
     }
+
     public function closeModal()
     {
         $this->isOpen1 = false;
     }
+
     public function closeModal2()
     {
         $this->isOpen2 = false;
     }
-
 
     public function resetFields(){
         $this->name = '';
@@ -92,7 +93,6 @@ class Index extends Component
         $this->slug = '';
         $this->address = '';
     }
-
 
     public function save()
     {
@@ -111,7 +111,6 @@ class Index extends Component
             session()->flash('error','Something goes wrong!!');
         }
     }
-
 
     public function editPost($id){
         try {

@@ -36,26 +36,22 @@
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('name')">
                                 <button class="flex items-center">
                                     Product name
-
                                 </button>
 
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('address')">
                                 <button class="flex items-center">
                                     Vendor Id
-
                                 </button>
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('slug')">
                                 <button class="flex items-center">
                                     Description
-
                                 </button>
                             </th>
                             <th scope="col" class="px-6 py-3" wire:click="setSortBy('credit_limit')">
                                 <button class="flex items-center">
                                     Price
-
                                 </button>
                             </th>
                             <th scope="col" class="px-6 py-3">
