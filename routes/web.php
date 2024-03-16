@@ -24,14 +24,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/customer',Index::class)->name('customer.index');
-// Route::get('/customer/create',Create::class)->name('customer.create');
-// Route::get('/customer/edit',Edit::class)->name('customer.edit');
 
-Route::get('/product',ProductsIndex::class)->name('product.index');
-
-
-Route::get('/supplier',SupplierIndex::class)->name('supplier.index');
 
 Route::middleware([
     'auth:sanctum',
@@ -41,4 +34,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/customer',Index::class)->name('customer.index');
+    // Route::get('/customer/create',Create::class)->name('customer.create');
+    // Route::get('/customer/edit',Edit::class)->name('customer.edit');
+
+    Route::get('/product',ProductsIndex::class)->name('product.index');
+
+
+    Route::get('/supplier',SupplierIndex::class)->name('supplier.index');
 });
